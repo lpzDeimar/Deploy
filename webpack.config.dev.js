@@ -13,6 +13,10 @@ const ImageminWebpWebpackPlugin = require("imagemin-webp-webpack-plugin");
 
 // Variable de entorno  npm install -D dotenv-webpack
 const Dotenv = require("dotenv-webpack");
+const { NOTIMP } = require("dns");
+
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
 module.exports = {
   entry: "./src/index.js",
@@ -23,7 +27,9 @@ module.exports = {
     clean: true,
   },
   mode: "development",
-  watch: true,
+  // crea el mapa js para porder analizarlo mas eficiente mente
+  devtool: "source-map",
+  // watch: true,
   resolve: {
     extensions: [".js"],
     alias: {
@@ -67,6 +73,7 @@ module.exports = {
 
   // seccion de plugins
   plugins: [
+    new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
       // con esto no sera necesario crear el script js en el html pues el lo hara por si mismo
@@ -92,5 +99,19 @@ module.exports = {
 
     // pasa imagenes a webp
     new ImageminWebpWebpackPlugin(),
+
+    // para ver el tamaño de las dep npm install --save-dev webpack-bundle-analyzer
+    // apra general el json que mostrara los valores usamos webpack --profile --json > stats.json
+    // para leer el archivo webpack-bundle-analyzer bundle/output/path/stats.json
   ],
+
+  // servidor local montado con webpack para este instalamos npm i webpack-dev-server
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    compress: true,
+    port: 3005,
+    historyApiFallback: true,
+  },
 };
