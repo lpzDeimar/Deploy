@@ -246,8 +246,8 @@ body {
 	position: relative;
 	padding: 20px 0;
 	width: 100%;
-	background: #fff;
-	border-radius: 3px;
+	background: #f3f8fb;
+	border-radius: 10px;
 	box-shadow: 0 0 1px rgba(0, 0, 0, .5);
 	overflow: hidden;
 	text-align: center;
@@ -313,8 +313,8 @@ body {
 	padding: 1em 0;
 }
 .card_social img {
-	width: 32px;
-	height: 32px;
+	width: 35px;
+	height: 35px;
 }
 
 .card_social a {
@@ -327,7 +327,7 @@ body {
 
 .circle svg {
   fill: none;
-  stroke: #8a3ab9;
+  stroke: #0791e6;
   stroke-linecap: round;
   stroke-width: 3;
   stroke-dasharray: 1;
@@ -343,11 +343,11 @@ body {
 
 @keyframes stroke-draw {
   from {
-    stroke: #8a3ab9;
+    stroke: #0791e6;
     stroke-dasharray: 1;
   }
   to {
-    stroke: #cd486b;
+    stroke: #98ca3f;
     transform: rotate(180deg);
     stroke-dasharray: 8;
   }
